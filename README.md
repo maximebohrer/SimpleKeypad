@@ -10,7 +10,9 @@ Fonctions
 ---------
 
 `SimpleKeypad()` : Constructor (see the example)
+
 `getKey()` : Scans the keypad every 10 ms and returns a key only one time, when you start pressing it
+
 `scan()` : Scans the keypad and returns the raw output (the key currently being held down)
 
 Example
