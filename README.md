@@ -6,7 +6,7 @@ SimpleKeypad is based on the [original Keypad library](https://github.com/Chris-
 
 This code was tested on the Arduino Uno and Nano, but it should work on any card.
 
-Fonctions
+Functions
 ---------
 
 `SimpleKeypad()` : Constructor (see the example)
