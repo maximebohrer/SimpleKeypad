@@ -4,7 +4,7 @@ SimpleKeypad library for Arduino
 SimpleKeypad is an Arduino library for using matrix keypads.
 SimpleKeypad is based on the [original Keypad library](https://github.com/Chris--A/Keypad), but it is a simplified version. It does not support mutiple keypresses. It requires less memory and runs a bit faster.
 
-This code handles up to two keypress. Detecting two keys enables to use to detect a key press even if the previous key was not fully released. Some clever logic determines which of the two was pressed last. This makes the keypad less frustrating to use, and makes it easier to type quickly.
+This code handles up to two keypress. Detecting two keys enables to detect a key press even if the previous key was not fully released. Some clever logic determines which of the two was pressed last. This makes the keypad less frustrating to use, and makes it easier to type quickly.
 Trying to detect more than two is pointless because ghosting can occur if three keys or more are pressed, meaning that an unpressed key can be registered as pressed (unless diodes are used in the circuit).
 
 This code was tested on the Arduino Uno and Nano, but it should work on any card.
