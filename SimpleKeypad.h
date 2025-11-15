@@ -1,22 +1,27 @@
-#ifndef simple_keypad_lib
-#define simple_keypad_lib
+#ifndef SIMPLEKEYPAD_H
+#define SIMPLEKEYPAD_H
 
 #include <Arduino.h>
 
 class SimpleKeypad {
   public:
-    SimpleKeypad(char *key_charsA, byte *row_pinsA, byte *col_pinsA, byte nb_rowsA, byte nb_colsA);
+    SimpleKeypad(char *keyChars, byte *rowPins, byte *colPins, byte nbRows, byte nbCols);
     char scan();
     char getKey();
+    char currentKeys[2] = {0};
 
   private:
-    char *key_chars;
-    byte *row_pins;
-    byte *col_pins;
-    byte nb_rows;
-    byte nb_cols;
-    static const int debounce = 10;
-    unsigned long timer = 0;
+    char *keyChars;
+    byte *rowPins;
+    byte *colPins;
+    byte nbRows;
+    byte nbCols;
+    static const int debounceTime = 10;
+    unsigned long debounceTimer = 0;
+    static const int scanPeriod = 2;
+    unsigned long scanTimer = 0;
+    char currentKey = 0;
+    char lastKey = 0;
     bool hold = 0;
 };
 

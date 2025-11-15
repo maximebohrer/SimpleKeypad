@@ -4,16 +4,18 @@ SimpleKeypad library for Arduino
 SimpleKeypad is an Arduino library for using matrix keypads.
 SimpleKeypad is based on the [original Keypad library](https://github.com/Chris--A/Keypad), but it is a simplified version. It does not support mutiple keypresses. It requires less memory and runs a bit faster.
 
+This code handles up to two keypress. Detecting two keys enables to use to detect a key press even if the previous key was not fully released. Some clever logic determines which of the two was pressed last. This makes the keypad less frustrating to use, and makes it easier to type quickly.
+Trying to detect more than two is pointless because ghosting can occur if three keys or more are pressed, meaning that an unpressed key can be registered as pressed (unless diodes are used in the circuit).
+
 This code was tested on the Arduino Uno and Nano, but it should work on any card.
 
 Functions
 ---------
 
-`SimpleKeypad()` : Constructor (see the example)
-
-`getKey()` : Scans the keypad every 10 ms and returns a key only one time, when you start pressing it
-
-`scan()` : Scans the keypad and returns the raw output (the key currently being held down)
+`char SimpleKeypad::SimpleKeypad()`: Constructor (see the example).
+`char SimpleKeypad::getKey()`: Scans the keypad every and returns a key only one time, when you start pressing it. Does some debouncing.
+`SimpleKeypad::scan()`: Scans the keypad and returns the raw output (the key currently being held down).
+`SimpleKeypad::currentKeys`: After calling `getKey` or `scan`, the two keys that are pressed are stored in this array of two chars.
 
 Example
 -------
@@ -36,11 +38,11 @@ SimpleKeypad kp1((char*)key_chars, rowPins, colPins, nb_rows, nb_cols);   // New
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("Press any key on the keypad and it will show up here :");
+  Serial.println("Press any key on the keypad and it will show up here:");
 }
 
 void loop() {
-  char key = kp1.getKey();                      // The getKey function scans the keypad every 10 ms and returns a key only one time, when you start pressing it
+  char key = kp1.getKey();                      // The getKey function scans the keypad every 2 ms and returns a key only one time, when you start pressing it
   if (key) {                                    // If getKey returned any key
     Serial.println(key);                        // it is printed on the serial monitor
   }

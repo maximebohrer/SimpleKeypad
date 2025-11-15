@@ -25,7 +25,7 @@ void setup() {
 }
 
 void loop() {
-  char key = kp1.getKey();                      // The getKey function scans the keypad every 10 ms and returns a key only one time, when you start pressing it
+  char key = kp1.getKey();                      // The getKey function scans the keypad every 2 ms and returns a key only one time, when you start pressing it
   if (key) {                                    // If getKey returned any key
     Serial.println(key);                        // it is printed on the serial monitor
   }
